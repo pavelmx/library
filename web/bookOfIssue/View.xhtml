@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resources.ViewBookOfIssueTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{resources.ViewBookOfIssueLabel_id}"/>
+                    <h:outputText value="#{bookOfIssueController.selected.id}" title="#{resources.ViewBookOfIssueTitle_id}"/>
+                    <h:outputText value="#{resources.ViewBookOfIssueLabel_book}"/>
+                    <h:outputText value="#{bookOfIssueController.selected.book}" title="#{resources.ViewBookOfIssueTitle_book}"/>
+                    <h:outputText value="#{resources.ViewBookOfIssueLabel_dateofissue}"/>
+                    <h:outputText value="#{bookOfIssueController.selected.dateofissue}" title="#{resources.ViewBookOfIssueTitle_dateofissue}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{resources.ViewBookOfIssueLabel_returndate}"/>
+                    <h:outputText value="#{bookOfIssueController.selected.returndate}" title="#{resources.ViewBookOfIssueTitle_returndate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{resources.ViewBookOfIssueLabel_client}"/>
+                    <h:outputText value="#{bookOfIssueController.selected.client}" title="#{resources.ViewBookOfIssueTitle_client}"/>
+                    <h:outputText value="#{resources.ViewBookOfIssueLabel_librarian}"/>
+                    <h:outputText value="#{bookOfIssueController.selected.librarian}" title="#{resources.ViewBookOfIssueTitle_librarian}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{bookOfIssueController.destroyAndView}" value="#{resources.ViewBookOfIssueDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{resources.ViewBookOfIssueEditLink}"/>
+                <br />
+                <h:commandLink action="#{bookOfIssueController.prepareCreate}" value="#{resources.ViewBookOfIssueCreateLink}" />
+                <br />
+                <h:commandLink action="#{bookOfIssueController.prepareList}" value="#{resources.ViewBookOfIssueShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resources.ViewBookOfIssueIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

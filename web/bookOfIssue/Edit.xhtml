@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resources.EditBookOfIssueTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{resources.EditBookOfIssueLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{bookOfIssueController.selected.id}" title="#{resources.EditBookOfIssueTitle_id}" required="true" requiredMessage="#{resources.EditBookOfIssueRequiredMessage_id}"/>
+                    <h:outputLabel value="#{resources.EditBookOfIssueLabel_book}" for="book" />
+                    <h:inputText id="book" value="#{bookOfIssueController.selected.book}" title="#{resources.EditBookOfIssueTitle_book}" />
+                    <h:outputLabel value="#{resources.EditBookOfIssueLabel_dateofissue}" for="dateofissue" />
+                    <h:inputText id="dateofissue" value="#{bookOfIssueController.selected.dateofissue}" title="#{resources.EditBookOfIssueTitle_dateofissue}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{resources.EditBookOfIssueLabel_returndate}" for="returndate" />
+                    <h:inputText id="returndate" value="#{bookOfIssueController.selected.returndate}" title="#{resources.EditBookOfIssueTitle_returndate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{resources.EditBookOfIssueLabel_client}" for="client" />
+                    <h:selectOneMenu id="client" value="#{bookOfIssueController.selected.client}" title="#{resources.EditBookOfIssueTitle_client}" >
+                        <f:selectItems value="#{clientController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{resources.EditBookOfIssueLabel_librarian}" for="librarian" />
+                    <h:selectOneMenu id="librarian" value="#{bookOfIssueController.selected.librarian}" title="#{resources.EditBookOfIssueTitle_librarian}" >
+                        <f:selectItems value="#{librarianController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{bookOfIssueController.update}" value="#{resources.EditBookOfIssueSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{resources.EditBookOfIssueViewLink}"/>
+                <br />
+                <h:commandLink action="#{bookOfIssueController.prepareList}" value="#{resources.EditBookOfIssueShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resources.EditBookOfIssueIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
