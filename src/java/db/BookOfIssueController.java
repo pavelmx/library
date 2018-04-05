@@ -34,23 +34,21 @@ public class BookOfIssueController implements Serializable {
     public BookOfIssueController() {
     }
     
-     public boolean check() {
+     public boolean check(BookOfIssue items) {
         
          DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
 Calendar cal = Calendar.getInstance();
 Collection<BookOfIssue> bk = ejbFacade.checkr();
-     for (BookOfIssue entry : bk){    
-     //if(cal.getTime().after(entry.getReturndate())){
-         if(entry==current){
+       
+     if(cal.getTime().after(items.getReturndate())){
+         
          System.out.println("true");
          return true;
      }else{
          System.out.println("false");
-         continue;
+         return false;
      }
-    }
-     System.out.println("tr");
-        return true;
+    
      }
     
     public BookOfIssue getSelected() {

@@ -20,7 +20,7 @@
                     <h:outputText value="#{bookOfIssueController.pagination.pageFirstItem + 1}..#{bookOfIssueController.pagination.pageLastItem + 1}/#{bookOfIssueController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{bookOfIssueController.previous}" value="#{resources.Previous} #{bookOfIssueController.pagination.pageSize}" rendered="#{bookOfIssueController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{bookOfIssueController.next}" value="#{resources.Next} #{bookOfIssueController.pagination.pageSize}" rendered="#{bookOfIssueController.pagination.hasNextPage}"/>&nbsp;
-                    <p:dataTable value="#{bookOfIssueController.items}" var="item"  rowStyleClass="#{bookOfIssueController.check()==true ? 'check' : 'jsfcrud_even_row'}" >              <!-- border="0" cellpadding="2" cellspacing="0" ro  rules="all" style="border:solid 1px"--> 
+                    <p:dataTable value="#{bookOfIssueController.items}" var="item"  rowStyleClass="#{bookOfIssueController.check(item)==true ? 'check' : 'jsfcrud_even_row'}" >              <!-- border="0" cellpadding="2" cellspacing="0" ro  rules="all" style="border:solid 1px"--> 
                         <p:column>
                             <f:facet name="header">
                                 <p:outputLabel value="#{resources.ListBookOfIssueTitle_id}"/>
