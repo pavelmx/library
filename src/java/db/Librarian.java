@@ -99,7 +99,7 @@ public class Librarian implements Serializable {
 
     @Override
     public String toString() {
-        return "db.Librarian[ id=" + id + " ]";
+        return name;
     }
     
 }

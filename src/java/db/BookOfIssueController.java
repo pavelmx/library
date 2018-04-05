@@ -4,6 +4,10 @@ import db.util.JsfUtil;
 import db.util.PaginationHelper;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Collection;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -29,7 +33,26 @@ public class BookOfIssueController implements Serializable {
 
     public BookOfIssueController() {
     }
-
+    
+     public boolean check() {
+        
+         DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
+Calendar cal = Calendar.getInstance();
+Collection<BookOfIssue> bk = ejbFacade.checkr();
+     for (BookOfIssue entry : bk){    
+     //if(cal.getTime().after(entry.getReturndate())){
+         if(entry==current){
+         System.out.println("true");
+         return true;
+     }else{
+         System.out.println("false");
+         continue;
+     }
+    }
+     System.out.println("tr");
+        return true;
+     }
+    
     public BookOfIssue getSelected() {
         if (current == null) {
             current = new BookOfIssue();
@@ -38,7 +61,7 @@ public class BookOfIssueController implements Serializable {
         return current;
     }
 
-    private BookOfIssueFacade getFacade() {
+     private BookOfIssueFacade getFacade() {
         return ejbFacade;
     }
 

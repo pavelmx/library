@@ -65,7 +65,7 @@ form.jsfcrud_list_form td, td td {
 }
 
 tr.jsfcrud_odd_row {
-    background-color: #fefeff;
+    background-color: #ffff73;
     color: #4e6a71;
 }
 
@@ -73,6 +73,16 @@ tr.jsfcrud_odd_row {
 tr.jsfcrud_even_row {
     background-color: #eff5fa;
     color: #4e6a71;
+}
+
+tr.check{
+    background-color: #fc717b;
+    color: #4e6a71;
+}
+
+#check2{
+
+    color: #fc717b;
 }
 
 #busyImage {

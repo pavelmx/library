@@ -97,7 +97,7 @@ public class Book implements Serializable {
 
     @Override
     public String toString() {
-        return "db.Book[ id=" + id + " ]";
+        return autor;
     }
     
 }

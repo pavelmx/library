@@ -56,7 +56,7 @@ public class BookOfIssue implements Serializable {
     @JoinColumn(name = "Librarian", referencedColumnName = "id")
     @ManyToOne
     private Librarian librarian;
-
+    
     public BookOfIssue() {
     }
 
@@ -134,7 +134,7 @@ public class BookOfIssue implements Serializable {
 
     @Override
     public String toString() {
-        return "db.BookOfIssue[ id=" + id + " ]";
+        return getBook()+" "+getClient()+" "+getLibrarian()+" "+getDateofissue()+" "+getReturndate()+"\n";
     }
     
 }

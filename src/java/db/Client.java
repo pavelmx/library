@@ -122,7 +122,7 @@ public class Client implements Serializable {
 
     @Override
     public String toString() {
-        return "db.Client[ id=" + id + " ]";
+        return fio;
     }
     
 }
