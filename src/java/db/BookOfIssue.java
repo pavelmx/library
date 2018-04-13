@@ -42,8 +42,9 @@ public class BookOfIssue implements Serializable {
     @NotNull
     @Column(name = "id")
     private Integer id;
-    @Column(name = "Book")
-    private Integer book;
+    @JoinColumn(name = "Book", referencedColumnName = "id")
+    @ManyToOne
+    private Book book;
     @Column(name = "Date_of_issue")
     @Temporal(TemporalType.DATE)
     private Date dateofissue;
@@ -72,11 +73,11 @@ public class BookOfIssue implements Serializable {
         this.id = id;
     }
 
-    public Integer getBook() {
+    public Book getBook() {
         return book;
     }
 
-    public void setBook(Integer book) {
+    public void setBook(Book book) {
         this.book = book;
     }
 

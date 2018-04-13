@@ -34,6 +34,11 @@
  
         <f:facet name="right">
             
+                <p:inputText id="find" value="#{FindCtrl.findStr}" /> 
+                <p:commandButton action="#{FindCtrl.goFind()}" value="Find" />
+           <span class="ui-separator">
+                <span class="ui-icon ui-icon-grip-dotted-vertical" />
+            </span>
             <p:menuButton value="Options">     
                 <p:menuitem value="Homepage" outcome="/index.xhtml" icon="ui-icon-home" />
             </p:menuButton>

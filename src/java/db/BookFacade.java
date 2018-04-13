@@ -5,9 +5,11 @@
  */
 package db;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,5 +29,15 @@ public class BookFacade extends AbstractFacade<Book> {
     public BookFacade() {
         super(Book.class);
     }
+    
+    public List<Book> FindBook(String findStr){
+        
+         Query sel = em.createQuery("FROM Book b WHERE b.namebook LIKE :findStr ");
+         sel.setParameter("findStr", "%"+findStr+"%");
+         System.out.println(sel.getResultList());
+         //System.out.println(findStr);
+         
+     return sel.getResultList();
+     }
     
 }
