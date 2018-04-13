@@ -2,27 +2,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Library</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-        LIBRARY
-        <ui:composition>
-        <br />
-        <h:link outcome="/book/List" value="Show All Book Items"/>
-        <br />
-        <h:link outcome="/bookOfIssue/List" value="Show All BookOfIssue Items"/>
-        <br />
-        <h:link outcome="/client/List" value="Show All Client Items"/>
-        <br />
-        <h:link outcome="/librarian/List" value="Show All Librarian Items"/>
-    </ui:composition>
+         <h:form>     
+    <p:growl id="messages" showDetail="true" />
+ 
+    <p:panelMenu>
+        <p:submenu style="text-align: center" label="Library">
+            <p:menuitem style="text-indent:20px"  value="Book" outcome="/book/List" icon="ui-icon-note" />
+            <p:menuitem style="text-indent:20px" outcome="/bookOfIssue/List" value="BookOfissue"   icon="ui-icon-arrowthickstop-1-e" />
+            <p:menuitem style="text-indent:20px" outcome="/client/List" value="Client"  icon="ui-icon-person" />
+            <p:menuitem style="text-indent:20px" outcome="/librarian/List" value="Librarian"  icon="ui-icon-bookmark" />
+            </p:submenu> 
+    </p:panelMenu>
+    
+   <!-- <p:toolbar>
+        <f:facet name="left">
+
+            <br />
+            
+            <center><p:outputLabel value="Library" /></center>
+            <br />
+            <p:commandButton  type="button" style="width: 200px" value="Book" icon="ui-icon-note" />
+            <br />
+            <p:commandButton  type="button" style="width: 200px" value="BookOfIssue" icon="ui-icon-arrowthickstop-1-e" />
+            <br />
+            <p:commandButton  type="button" style="width: 200px" value="Client" icon="ui-icon-person" />
+            <br />
+            <p:commandButton  type="button" style="width: 200px" value="Librarian" icon="ui-icon-bookmark" />
+            <br />
+
+        </f:facet>
+    </p:toolbar>-->
+        </h:form>       
     </h:body>
-
-
-
-
 </html>
 

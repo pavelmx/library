@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
@@ -10,24 +11,24 @@
             <h:outputText value="#{resources.CreateLibrarianTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
+             
             <h:form>
+                <p:growl id="growl" showDetail="true" />
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{resources.CreateLibrarianLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{librarianController.selected.id}" title="#{resources.CreateLibrarianTitle_id}" required="true" requiredMessage="#{resources.CreateLibrarianRequiredMessage_id}"/>
-                    <h:outputLabel value="#{resources.CreateLibrarianLabel_name}" for="name" />
-                    <h:inputText id="name" value="#{librarianController.selected.name}" title="#{resources.CreateLibrarianTitle_name}" />
+                    <p:outputLabel  for="id" />
+                    <p:inputText placeholder="Id" id="id" value="#{librarianController.selected.id}" title="#{resources.CreateLibrarianTitle_id}" required="true" requiredMessage="#{resources.CreateLibrarianRequiredMessage_id}"/>
+                    <p:outputLabel  for="name" />
+                    <p:inputText placeholder="Name librarian" id="name" value="#{librarianController.selected.name}" title="#{resources.CreateLibrarianTitle_name}" />
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{librarianController.create}" value="#{resources.CreateLibrarianSaveLink}" />
+                <p:separator/>
+                <p:commandButton action="#{librarianController.create}" value="#{resources.CreateLibrarianSaveLink}" update="growl" />
                 <br />
                 <br />
-                <h:commandLink action="#{librarianController.prepareList}" value="#{resources.CreateLibrarianShowAllLink}" immediate="true"/>
+                <p:commandButton action="#{librarianController.prepareList}" value="#{resources.CreateLibrarianShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{resources.CreateLibrarianIndexLink}"/>
+                <p:button outcome="/index" value="#{resources.CreateLibrarianIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

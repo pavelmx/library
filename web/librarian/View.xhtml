@@ -3,35 +3,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{resources.ViewLibrarianTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
+           
             <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{resources.ViewLibrarianLabel_id}"/>
-                    <h:outputText value="#{librarianController.selected.id}" title="#{resources.ViewLibrarianTitle_id}"/>
-                    <h:outputText value="#{resources.ViewLibrarianLabel_name}"/>
-                    <h:outputText value="#{librarianController.selected.name}" title="#{resources.ViewLibrarianTitle_name}"/>
-                </h:panelGrid>
+                <p:growl id="growl" showDetail="true" />
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="#{resources.ViewLibrarianLabel_id}"/>
+                    <p:outputLabel value="#{librarianController.selected.id}" title="#{resources.ViewLibrarianTitle_id}"/>
+                    <p:outputLabel value="#{resources.ViewLibrarianLabel_name}"/>
+                    <p:outputLabel value="#{librarianController.selected.name}" title="#{resources.ViewLibrarianTitle_name}"/>
+                </p:panelGrid>
                 <br />
-                <h:commandLink action="#{librarianController.destroyAndView}" value="#{resources.ViewLibrarianDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{resources.ViewLibrarianEditLink}"/>
-                <br />
-                <h:commandLink action="#{librarianController.prepareCreate}" value="#{resources.ViewLibrarianCreateLink}" />
-                <br />
-                <h:commandLink action="#{librarianController.prepareList}" value="#{resources.ViewLibrarianShowAllLink}"/>
+                <p:separator/>
+                <p:commandButton action="#{librarianController.destroyAndView}" value="#{resources.ViewLibrarianDestroyLink}" update="growl"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{resources.ViewLibrarianIndexLink}"/>
+                <p:button outcome="Edit" value="#{resources.ViewLibrarianEditLink}"/>
+                <br /> 
+                <br />
+                
+                <p:commandButton action="#{librarianController.prepareCreate}" value="#{resources.ViewLibrarianCreateLink}" />
+                <br />
+                 <br />
+                <p:commandButton action="#{librarianController.prepareList}" value="#{resources.ViewLibrarianShowAllLink}"/>
+                <br />
+                <br />
+                <p:button outcome="/index" value="#{resources.ViewLibrarianIndexLink}"/>
 
             </h:form>
         </ui:define>

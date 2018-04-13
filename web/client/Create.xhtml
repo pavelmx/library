@@ -3,35 +3,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{resources.CreateClientTitle}"></h:outputText>
         </ui:define>
+        
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
+            
             <h:form>
+                
+                <p:growl id="growl" showDetail="true" />
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{resources.CreateClientLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{clientController.selected.id}" title="#{resources.CreateClientTitle_id}" required="true" requiredMessage="#{resources.CreateClientRequiredMessage_id}"/>
-                    <h:outputLabel value="#{resources.CreateClientLabel_fio}" for="fio" />
-                    <h:inputText id="fio" value="#{clientController.selected.fio}" title="#{resources.CreateClientTitle_fio}" />
-                    <h:outputLabel value="#{resources.CreateClientLabel_adress}" for="adress" />
-                    <h:inputText id="adress" value="#{clientController.selected.adress}" title="#{resources.CreateClientTitle_adress}" />
-                    <h:outputLabel value="#{resources.CreateClientLabel_phone}" for="phone" />
-                    <h:inputText id="phone" value="#{clientController.selected.phone}" title="#{resources.CreateClientTitle_phone}" />
+                    <p:outputLabel  for="id" />
+                    <p:inputText placeholder="Id" id="id" value="#{clientController.selected.id}" title="#{resources.CreateClientTitle_id}" required="true" requiredMessage="#{resources.CreateClientRequiredMessage_id}"/>
+                    <p:outputLabel  for="fio" />
+                    <p:inputText placeholder="FIO" id="fio" value="#{clientController.selected.fio}" title="#{resources.CreateClientTitle_fio}" />
+                    <p:outputLabel  for="adress" />
+                    <p:inputText placeholder="Adress" id="adress" value="#{clientController.selected.adress}" title="#{resources.CreateClientTitle_adress}" />
+                    <p:outputLabel  for="phone" />
+                    <p:inputText placeholder="Phone" id="phone" value="#{clientController.selected.phone}" title="#{resources.CreateClientTitle_phone}" />
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{clientController.create}" value="#{resources.CreateClientSaveLink}" />
+                 <p:separator/>
+                <p:commandButton action="#{clientController.create}" value="#{resources.CreateClientSaveLink}" update="growl"/>
                 <br />
                 <br />
-                <h:commandLink action="#{clientController.prepareList}" value="#{resources.CreateClientShowAllLink}" immediate="true"/>
+                <p:commandButton action="#{clientController.prepareList}" value="#{resources.CreateClientShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{resources.CreateClientIndexLink}"/>
+                <p:button outcome="/index" value="#{resources.CreateClientIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

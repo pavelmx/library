@@ -8,20 +8,20 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{resources.ListBookOfIssueTitle}"></h:outputText>
+            <h:outputText value="#{resources.ListBookOfIssue}"></h:outputText>
         </ui:define>
+                       
         <ui:define name="body">
+             
             <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
+
                 <h:outputText escape="false" value="#{resources.ListBookOfIssueEmpty}" rendered="#{bookOfIssueController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{bookOfIssueController.items.rowCount > 0}">
                     <h:outputText value="#{bookOfIssueController.pagination.pageFirstItem + 1}..#{bookOfIssueController.pagination.pageLastItem + 1}/#{bookOfIssueController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{bookOfIssueController.previous}" value="#{resources.Previous} #{bookOfIssueController.pagination.pageSize}" rendered="#{bookOfIssueController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{bookOfIssueController.next}" value="#{resources.Next} #{bookOfIssueController.pagination.pageSize}" rendered="#{bookOfIssueController.pagination.hasNextPage}"/>&nbsp;
-                    <p:dataTable value="#{bookOfIssueController.items}" var="item"  rowStyleClass="#{bookOfIssueController.check(item)==true ? 'check' : 'jsfcrud_even_row'}" >              <!-- border="0" cellpadding="2" cellspacing="0" ro  rules="all" style="border:solid 1px"--> 
-                        <p:column>
+                    <p:dataTable id="table" value="#{bookOfIssueController.items}" var="item"  rowStyleClass="#{bookOfIssueController.check(item)==true ? 'check' : 'jsfcrud_even_row'}" style="border:solid 1px">              <!-- border="0" cellpadding="2" cellspacing="0" ro  rules="all" style="border:solid 1px"--> 
+                        <p:column width="20">
                             <f:facet name="header">
                                 <p:outputLabel value="#{resources.ListBookOfIssueTitle_id}"/>
                             </f:facet>
@@ -29,8 +29,7 @@
                         </p:column>
                         <p:column >
                             <f:facet name="header">
-                                <p:outputLabel value="#{resources.ListBookOfIssueTitle_book}" />
-                                
+                                <p:outputLabel value="#{resources.ListBookOfIssueTitle_book}" />                  
                             </f:facet>
                             <p:outputLabel value="#{item.book.toString()}"  />
                             
@@ -61,30 +60,25 @@
                             <f:facet name="header">
                                 <p:outputLabel value="#{resources.ListBookOfIssueTitle_librarian}"/>
                             </f:facet>
-                            <p:outputLabel value="#{item.librarian}"/>
+                            <p:outputLabel value="#{item.librarian.toString()}"/>
                         </p:column>
-                        <p:column>
+                        <p:column width="100">
                             <f:facet name="header">
                                 <p:outputLabel value="&nbsp;"/>
                             </f:facet>
-                            <p:commandLink action="#{bookOfIssueController.prepareView}" value="#{resources.ListBookOfIssueViewLink}"/>
-                            <p:outputLabel value=" "/>
-                            <p:commandLink action="#{bookOfIssueController.prepareEdit}" value="#{resources.ListBookOfIssueEditLink}"/>
-                            <p:outputLabel value=" "/>
-                            <p:commandLink action="#{bookOfIssueController.destroy}" value="#{resources.ListBookOfIssueDestroyLink}"/>
-                            <p:outputLabel value=" "/>
-                           
+                            <p:menuButton value="Options">
+                                <p:menuitem action="#{bookOfIssueController.prepareView()}" value="View"   icon="ui-icon-search" />
+                                <p:menuitem action="#{bookOfIssueController.prepareEdit}" value="Edit"   icon="ui-icon-pencil" />
+                                <p:menuitem actionListener="#{bookOfIssueController.destroy()}" value="Destroy" icon="ui-icon-trash" update="table"/>
+                            </p:menuButton>   
                         </p:column>
-                    </p:dataTable> 
-                     <p:commandLink value="Check" action="#{bookOfIssueController.check()}"/>
-                     
+                    </p:dataTable>      
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{bookOfIssueController.prepareCreate}" value="#{resources.ListBookOfIssueCreateLink}"/>
+                <p:commandButton action="#{bookOfIssueController.prepareCreate()}" value="#{resources.ListBookOfIssueCreateLink}"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{resources.ListBookOfIssueIndexLink}"/>
-            </h:form>
+                  </h:form>
         </ui:define>
     </ui:composition>
 
