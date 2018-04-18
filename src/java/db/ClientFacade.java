@@ -30,9 +30,12 @@ public class ClientFacade extends AbstractFacade<Client> {
         super(Client.class);
     }
     
+    
+    
+    
     public List<Client> FindClient(String findStr){
         
-         
+  
          Query sel = em.createQuery("FROM Client c WHERE c.fio LIKE :findStr ");
          sel.setParameter("findStr", "%"+findStr+"%");
          System.out.println(sel.getResultList());

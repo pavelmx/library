@@ -20,13 +20,13 @@
                     <p:outputLabel  for="id" />
                     <p:inputText placeholder="Id" id="id" value="#{bookOfIssueController.selected.id}" title="#{resources.CreateBookOfIssueTitle_id}" required="true" requiredMessage="#{resources.CreateBookOfIssueRequiredMessage_id}"/>
                     <p:outputLabel  for="book" />
-                    <p:selectOneMenu label="fdsvds" id="book" value="#{bookOfIssueController.selected.book}"  >
+                    <p:selectOneMenu id="book" value="#{bookOfIssueController.selected.book}"  >
                         <f:selectItems value="#{bookController.itemsAvailableSelectMany}"/>
                      </p:selectOneMenu>
                    
                     <p:outputLabel  for="dateofissue" />
                     
-                    <p:calendar pattern="MM/dd/yyyy" placeholder="Date of issue" id="dateofissue"  effect="fold" value="#{bookOfIssueController.selected.dateofissue}" title="#{resources.CreateBookOfIssueTitle_dateofissue}">
+                    <p:calendar pattern="MM/dd/yyyy" placeholder="Date of issue" id="dateofissue"  effect="slide" value="#{bookOfIssueController.selected.dateofissue}" title="#{resources.CreateBookOfIssueTitle_dateofissue}">
                     <p:ajax event="dateSelect" listener="#{bookOfIssueController.onDateSelect}" update="growl" />
                     </p:calendar>
                     <p:outputLabel  for="returndate" />

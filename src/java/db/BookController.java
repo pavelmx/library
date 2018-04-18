@@ -18,7 +18,7 @@ import javax.faces.model.SelectItem;
 
 @Named("bookController")
 @SessionScoped
-public class BookController implements Serializable {
+public class BookController implements Serializable,IFind {
 
     private Book current;
     private DataModel items = null;
@@ -60,11 +60,13 @@ public class BookController implements Serializable {
         return pagination;
     }
 
+    @Override
     public String prepareList() {
         recreateModel();
         return "List";
     }
 
+    @Override
     public String prepareView() {
         current = (Book) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
@@ -88,6 +90,7 @@ public class BookController implements Serializable {
         }
     }
 
+    @Override
     public String prepareEdit() {
         current = (Book) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
@@ -188,6 +191,18 @@ public class BookController implements Serializable {
 
     public Book getBook(java.lang.Integer id) {
         return ejbFacade.find(id);
+    }
+
+    @Override
+    public void prepareDestroy() {
+        getFacade().remove(current);
+        recreatePagination();
+        recreateModel();
+    }
+
+    @Override
+    public void setCurrentself(Object o) {
+        current = (Book) o;
     }
 
     @FacesConverter(forClass = Book.class)

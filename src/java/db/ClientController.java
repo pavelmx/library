@@ -18,7 +18,7 @@ import javax.faces.model.SelectItem;
 
 @Named("clientController")
 @SessionScoped
-public class ClientController implements Serializable {
+public class ClientController implements Serializable,IFind {
 
     private Client current;
     private DataModel items = null;
@@ -60,11 +60,13 @@ public class ClientController implements Serializable {
         return pagination;
     }
 
+    @Override
     public String prepareList() {
         recreateModel();
         return "List";
     }
 
+    @Override
     public String prepareView() {
         current = (Client) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
@@ -88,6 +90,7 @@ public class ClientController implements Serializable {
         }
     }
 
+    @Override
     public String prepareEdit() {
         current = (Client) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
@@ -136,6 +139,16 @@ public class ClientController implements Serializable {
         }
     }
 
+    @Override
+    public void prepareDestroy() {
+        getFacade().remove(current);
+    }
+
+    @Override
+    public void setCurrentself(Object o) {
+        current = (Client) o;
+    }
+    
     private void updateCurrentItem() {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {

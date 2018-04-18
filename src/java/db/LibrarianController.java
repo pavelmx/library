@@ -18,7 +18,7 @@ import javax.faces.model.SelectItem;
 
 @Named("librarianController")
 @SessionScoped
-public class LibrarianController implements Serializable {
+public class LibrarianController implements Serializable,IFind {
 
     private Librarian current;
     private DataModel items = null;
@@ -60,11 +60,13 @@ public class LibrarianController implements Serializable {
         return pagination;
     }
 
+    @Override
     public String prepareList() {
         recreateModel();
         return "List";
     }
 
+    @Override
     public String prepareView() {
         current = (Librarian) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
@@ -88,6 +90,7 @@ public class LibrarianController implements Serializable {
         }
     }
 
+    @Override
     public String prepareEdit() {
         current = (Librarian) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
@@ -114,6 +117,16 @@ public class LibrarianController implements Serializable {
         return "List";
     }
 
+    @Override
+    public void prepareDestroy() {
+        getFacade().remove(current);
+    }
+
+    @Override
+    public void setCurrentself(Object o) {
+        current = (Librarian) o;
+    }
+    
     public String destroyAndView() {
         performDestroy();
         recreateModel();

@@ -1,5 +1,6 @@
 
 import db.Book;
+import db.IFind;
 import java.util.List;
 
 public class FindItms {
@@ -10,6 +11,15 @@ public class FindItms {
     private String site;
     private String info;
     private Object obj;
+    private IFind ctrl;
+
+    public IFind getCtrl() {
+        return ctrl;
+    }
+
+    public void setCtrl(IFind ctrl) {
+        this.ctrl = ctrl;
+    }
 
     public String getTable() {
         return table;
@@ -43,11 +53,12 @@ public class FindItms {
         this.obj = obj;
     }
     
-    public  FindItms( String table,String site,String info,Object obj){
+    public  FindItms( String table,String site,String info,Object obj, IFind ctrl){
         this.info = info;
         this.obj =obj;
         this.site =site;
         this.table =table;
+        this.ctrl = ctrl;
     }
     
     @Override
