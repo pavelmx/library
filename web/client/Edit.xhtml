@@ -20,6 +20,12 @@
                     <p:inputText id="id" value="#{clientController.selected.id}" title="#{resources.EditClientTitle_id}" required="true" requiredMessage="#{resources.EditClientRequiredMessage_id}"/>
                     <p:outputLabel value="#{resources.EditClientLabel_fio}" for="fio" />
                     <p:inputText id="fio" value="#{clientController.selected.fio}" title="#{resources.EditClientTitle_fio}" />
+                    
+                    <p:outputLabel value="#{resources.EditBookOfIssueLabel_dateofissue}" for="dateofbirth" />                  
+                    <p:calendar  pattern="MM/dd/yyyy" placeholder="Date of birth" id="dateofbirth"  effect="slide" value="#{clientController.selected.dateofbirth}" >
+                    <p:ajax event="dateSelect" listener="#{clientController.onDateSelect}" update="growl" />
+                    </p:calendar>
+                    
                     <p:outputLabel value="#{resources.EditClientLabel_adress}" for="adress" />
                     <p:inputText id="adress" value="#{clientController.selected.adress}" title="#{resources.EditClientTitle_adress}" />
                     <p:outputLabel value="#{resources.EditClientLabel_phone}" for="phone" />

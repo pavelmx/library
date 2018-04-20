@@ -32,6 +32,16 @@
                             </f:facet>
                             <p:outputLabel value="#{item.fio}"/>
                         </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <p:outputLabel value="Date of birth"/>
+                            </f:facet>
+                            <p:outputLabel value="#{item.dateofbirth}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </p:outputLabel>
+                        </p:column>
+                        
                         <p:column>
                             <f:facet name="header">
                                 <p:outputLabel value="#{resources.ListClientTitle_adress}"/>

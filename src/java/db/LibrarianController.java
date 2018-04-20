@@ -29,6 +29,10 @@ public class LibrarianController implements Serializable,IFind {
 
     public LibrarianController() {
     }
+    
+    public String prList() {    
+        return "/librarian/List";
+    }
 
     public Librarian getSelected() {
         if (current == null) {

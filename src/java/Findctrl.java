@@ -112,6 +112,7 @@ public class Findctrl implements Serializable {
     public String deleteItm(){
         
         FindItms f = (FindItms) getFindResult().getRowData();
+        System.out.println("delete "+f);
        f.getCtrl().setCurrentself(f.getObj());
        f.getCtrl().prepareDestroy();
         return goFind();

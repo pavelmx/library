@@ -20,7 +20,9 @@
                     <p:outputLabel value="#{resources.EditBookOfIssueLabel_id}" for="id" />
                     <p:inputText id="id" value="#{bookOfIssueController.selected.id}" title="#{resources.EditBookOfIssueTitle_id}" required="true" requiredMessage="#{resources.EditBookOfIssueRequiredMessage_id}"/>
                     <p:outputLabel value="#{resources.EditBookOfIssueLabel_book}" for="book" />
-                    <p:inputText id="book" value="#{bookOfIssueController.selected.book}" title="#{resources.EditBookOfIssueTitle_book}" />
+                    <p:selectOneMenu id="book" value="#{bookOfIssueController.selected.book}"  >
+                    <f:selectItems value="#{bookController.itemsAvailableSelectOne}"/>
+                    </p:selectOneMenu>
                     <p:outputLabel value="#{resources.EditBookOfIssueLabel_dateofissue}" for="dateofissue" />
                     <p:calendar  pattern="MM/dd/yyyy" placeholder="Date of issue" id="dateofissue"  effect="fold" value="#{bookOfIssueController.selected.dateofissue}" title="#{resources.CreateBookOfIssueTitle_dateofissue}">
                     <p:ajax event="dateSelect" listener="#{bookOfIssueController.onDateSelect}" update="growl" />

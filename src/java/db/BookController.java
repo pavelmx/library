@@ -65,6 +65,10 @@ public class BookController implements Serializable,IFind {
         recreateModel();
         return "List";
     }
+    
+    public String prList() {    
+        return "/book/List";
+    }
 
     @Override
     public String prepareView() {

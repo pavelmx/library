@@ -51,6 +51,10 @@ Collection<BookOfIssue> bk = ejbFacade.checkr();
     
      }
     
+     public String prList() {    
+        return "/bookOfIssue/List";
+    }
+     
     public BookOfIssue getSelected() {
         if (current == null) {
             current = new BookOfIssue();

@@ -9,16 +9,17 @@ xmlns:p="http://primefaces.org/ui" >
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 <title><ui:insert name="title">Default Title</ui:insert></title> 
 <h:outputStylesheet library="css" name="jsfcrud.css"/> 
+ 
 </h:head> 
-<ui:insert name="top"> 
-<ui:include src ="template2.xhtml" /> 
-</ui:insert> 
+
 <h:body> 
 <h1> 
 <ui:insert name="title">Default Title</ui:insert> 
 </h1> 
 
-
+<ui:insert name="top"> 
+<ui:include src ="menu.xhtml" /> 
+</ui:insert>
 
 
 <p> 

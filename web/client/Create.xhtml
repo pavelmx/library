@@ -21,6 +21,11 @@
                     <p:inputText placeholder="Id" id="id" value="#{clientController.selected.id}" title="#{resources.CreateClientTitle_id}" required="true" requiredMessage="#{resources.CreateClientRequiredMessage_id}"/>
                     <p:outputLabel  for="fio" />
                     <p:inputText placeholder="FIO" id="fio" value="#{clientController.selected.fio}" title="#{resources.CreateClientTitle_fio}" />
+                    
+                    <p:outputLabel  for="dateofbirth" />                  
+                    <p:calendar  pattern="MM/dd/yyyy" placeholder="Date of birth" id="dateofbirth"  effect="slide" value="#{clientController.selected.dateofbirth}" >
+                        <p:ajax  event="dateSelect" listener="#{clientController.onDateSelect}" update="growl" />
+                    </p:calendar>
                     <p:outputLabel  for="adress" />
                     <p:inputText placeholder="Adress" id="adress" value="#{clientController.selected.adress}" title="#{resources.CreateClientTitle_adress}" />
                     <p:outputLabel  for="phone" />

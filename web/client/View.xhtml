@@ -19,6 +19,12 @@
                     <p:outputLabel value="#{clientController.selected.id}" title="#{resources.ViewClientTitle_id}"/>
                     <p:outputLabel value="#{resources.ViewClientLabel_fio}"/>
                     <p:outputLabel value="#{clientController.selected.fio}" title="#{resources.ViewClientTitle_fio}"/>
+                    
+                    <p:outputLabel value="Date of birth"/>
+                    <p:outputLabel value="#{clientController.selected.dateofbirth}" title="#{resources.ViewClientTitle_fio}">
+                     <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:outputLabel>
+                    
                     <p:outputLabel value="#{resources.ViewClientLabel_adress}"/>
                     <p:outputLabel value="#{clientController.selected.adress}" title="#{resources.ViewClientTitle_adress}"/>
                     <p:outputLabel value="#{resources.ViewClientLabel_phone}"/>

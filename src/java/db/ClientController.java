@@ -4,6 +4,7 @@ import db.util.JsfUtil;
 import db.util.PaginationHelper;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -22,14 +23,25 @@ public class ClientController implements Serializable,IFind {
 
     private Client current;
     private DataModel items = null;
+
+   
     @EJB
     private db.ClientFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private Date date ;
 
     public ClientController() {
     }
 
+     public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
     public Client getSelected() {
         if (current == null) {
             current = new Client();
@@ -42,6 +54,10 @@ public class ClientController implements Serializable,IFind {
         return ejbFacade;
     }
 
+    public String prList() {    
+        return "/client/List";
+    }
+    
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
@@ -114,6 +130,7 @@ public class ClientController implements Serializable,IFind {
         performDestroy();
         recreatePagination();
         recreateModel();
+        System.out.println(date);
         return "List";
     }
 

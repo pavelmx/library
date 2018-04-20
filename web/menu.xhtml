@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+    </h:head>
+    
+    <h:form>
+        <p:toolbar >
+        <f:facet  name="left">
+            <p:button style="width: 150px"  outcome="#{bookController.prList()}"  value="Book" icon="ui-icon-check" />
+            <span class="ui-separator">
+                <span class="ui-icon ui-icon-grip-dotted-vertical" />
+            </span>
+                <p:button style="width: 150px" outcome="#{bookOfIssueController.prList()}" value="BookOfIssue" icon="ui-icon-check" />
+            <span class="ui-separator">
+                <span class="ui-icon ui-icon-grip-dotted-vertical" />
+            </span>
+                <p:button style="width: 150px" outcome="#{clientController.prList()}" value="Client" icon="ui-icon-check" />
+            <span class="ui-separator">
+                <span class="ui-icon ui-icon-grip-dotted-vertical" />
+            </span>
+                <p:button style="width: 150px" outcome="#{librarianController.prList()}" value="Librarian" icon="ui-icon-check" />
+            <span class="ui-separator">
+                <span class="ui-icon ui-icon-grip-dotted-vertical" />
+            </span>
+        </f:facet>
+ 
+        <f:facet name="right">
+            
+                <p:inputText id="find" value="#{FindCtrl.findStr}" /> 
+                <p:commandButton action="#{FindCtrl.goFind()}" value="Find"  />
+           <span class="ui-separator">
+                <span class="ui-icon ui-icon-grip-dotted-vertical" />
+            </span>
+            <p:menuButton value="Options">     
+                <p:menuitem value="Homepage" outcome="/index.xhtml" icon="ui-icon-home" />
+            </p:menuButton>
+        </f:facet>
+ 
+    </p:toolbar>
+    </h:form>
+    
+
+</html>
