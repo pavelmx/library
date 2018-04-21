@@ -19,10 +19,10 @@
                     <h:outputText value="#{clientController.pagination.pageFirstItem + 1}..#{clientController.pagination.pageLastItem + 1}/#{clientController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{clientController.previous}" value="#{resources.Previous} #{clientController.pagination.pageSize}" rendered="#{clientController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{clientController.next}" value="#{resources.Next} #{clientController.pagination.pageSize}" rendered="#{clientController.pagination.hasNextPage}"/>&nbsp;
-                    <p:dataTable id="table" value="#{clientController.items}" rowStyleClass=" jsfcrud_even_row" var="item"    style="border:solid 1px">
+                    <p:dataTable  id="table" value="#{clientController.items}" rowStyleClass=" jsfcrud_even_row" var="item"    style="border:solid 1px">
                         <p:column width="20">
                             <f:facet name="header">
-                                <p:outputLabel value="#{resources.ListClientTitle_id}"/>
+                            <p:outputLabel value="#{resources.ListClientTitle_id}"/>
                             </f:facet>
                             <p:outputLabel value="#{item.id}"/>
                         </p:column>
@@ -57,11 +57,13 @@
                         <p:column width="100">
                             <f:facet name="header">
                                 <p:outputLabel value="&nbsp;"/>
+                               
                             </f:facet>
                             <p:menuButton value="Options">
                                 <p:menuitem action="#{clientController.prepareView()}" value="View"   icon="ui-icon-search" />
                                 <p:menuitem action="#{clientController.prepareEdit}" value="Edit"   icon="ui-icon-pencil" />
                                 <p:menuitem actionListener="#{clientController.destroy}" value="Destroy" icon="ui-icon-trash" update="table" />
+                                
                             </p:menuButton>   </p:column>
                     </p:dataTable>
                 </h:panelGroup>

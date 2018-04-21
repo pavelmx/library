@@ -51,7 +51,12 @@
         
         <p:dataTable  id="table" value="#{FindCtrl.findResult}" var="item"  >
                 
-                        
+               <p:column style="width: 20px">
+                            <f:facet name="header">
+                                <p:outputLabel value="Id"/>
+                            </f:facet>
+                            <p:outputLabel value="#{item.obj}"/>
+                        </p:column>         
                 
             <p:column style="width: 200px">
                             <f:facet name="header">

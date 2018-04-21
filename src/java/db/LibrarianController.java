@@ -121,15 +121,19 @@ public class LibrarianController implements Serializable,IFind {
         return "List";
     }
 
-    @Override
-    public void prepareDestroy() {
-        getFacade().remove(current);
-    }
-
-    @Override
+     @Override
     public void setCurrentself(Object o) {
         current = (Librarian) o;
     }
+    
+    @Override
+    public void prepareDestroy() {
+        getFacade().remove(current);
+        recreatePagination();
+        recreateModel();
+    }
+
+   
     
     public String destroyAndView() {
         performDestroy();

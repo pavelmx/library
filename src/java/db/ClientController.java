@@ -156,15 +156,19 @@ public class ClientController implements Serializable,IFind {
         }
     }
 
-    @Override
-    public void prepareDestroy() {
-        getFacade().remove(current);
-    }
-
-    @Override
+      @Override
     public void setCurrentself(Object o) {
         current = (Client) o;
     }
+    
+    @Override
+    public void prepareDestroy() {
+        getFacade().remove(current);
+        recreatePagination();
+        recreateModel();
+    }
+
+  
     
     private void updateCurrentItem() {
         int count = getFacade().count();
