@@ -23,8 +23,8 @@
                     <p:inputText placeholder="FIO" id="fio" value="#{clientController.selected.fio}" title="#{resources.CreateClientTitle_fio}" />
                     
                     <p:outputLabel  for="dateofbirth" />                  
-                    <p:calendar  pattern="MM/dd/yyyy" placeholder="Date of birth" id="dateofbirth"  effect="slide" value="#{clientController.selected.dateofbirth}" >
-                        <p:ajax  event="dateSelect" listener="#{clientController.onDateSelect}" update="growl" />
+                    <p:calendar  pattern="MM/dd/yyyy" placeholder="Date of birth" id="dateofbirth"  effect="slide" value="#{clientController.selected.dateofbirth}" >                     
+                        <f:validator validatorId="CreationDateValid" />
                     </p:calendar>
                     <p:outputLabel  for="adress" />
                     <p:inputText placeholder="Adress" id="adress" value="#{clientController.selected.adress}" title="#{resources.CreateClientTitle_adress}" />

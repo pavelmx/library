@@ -29,18 +29,12 @@ public class ClientController implements Serializable,IFind {
     private db.ClientFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-    private Date date ;
+  
 
     public ClientController() {
     }
 
-     public Date getDate() {
-        return date;
-    }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
     
     public Client getSelected() {
         if (current == null) {
@@ -130,7 +124,6 @@ public class ClientController implements Serializable,IFind {
         performDestroy();
         recreatePagination();
         recreateModel();
-        System.out.println(date);
         return "List";
     }
 

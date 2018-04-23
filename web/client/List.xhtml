@@ -62,7 +62,7 @@
                             <p:menuButton value="Options">
                                 <p:menuitem action="#{clientController.prepareView()}" value="View"   icon="ui-icon-search" />
                                 <p:menuitem action="#{clientController.prepareEdit}" value="Edit"   icon="ui-icon-pencil" />
-                                <p:menuitem actionListener="#{clientController.destroy}" value="Destroy" icon="ui-icon-trash" update="table" />
+                                <p:menuitem actionListener="#{clientController.destroy()}" value="Destroy" icon="ui-icon-trash" update="table" />
                                 
                             </p:menuButton>   </p:column>
                     </p:dataTable>
