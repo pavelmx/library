@@ -49,8 +49,8 @@ public class DateValid implements Validator{
             age = age - 1;
         }
         }
-        if(age < 20)
-        throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,"Ограничение по возрасту","Читатели от 10 до 20 лет"));
+        if(age < 18)
+        throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,"Ограничение по возрасту","Читатели от 18 лет"));
         
     }
     

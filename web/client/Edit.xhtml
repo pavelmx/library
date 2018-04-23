@@ -23,7 +23,7 @@
                     
                     <p:outputLabel value="#{resources.EditBookOfIssueLabel_dateofissue}" for="dateofbirth" />                  
                     <p:calendar  pattern="MM/dd/yyyy" placeholder="Date of birth" id="dateofbirth"  effect="slide" value="#{clientController.selected.dateofbirth}" >
-                    <p:ajax event="dateSelect" listener="#{clientController.onDateSelect}" update="growl" />
+                    <f:validator validatorId="CreationDateValid" />
                     </p:calendar>
                     
                     <p:outputLabel value="#{resources.EditClientLabel_adress}" for="adress" />
